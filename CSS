@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Concepts Showcase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #4a6cf7;
+            --secondary: #6f42c1;
+            --dark: #1d2a3a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --success: #28a745;
+            --danger: #dc3545;
+            --warning: #ffc107;
+            --info: #17a2b8;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background-color: #f5f7ff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transform: rotate(30deg);
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .concept-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .concept-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .card-header {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+        }
+        
+        .card-header i {
+            font-size: 24px;
+            transition: var(--transition);
+        }
+        
+        .concept-card:hover .card-header i {
+            transform: scale(1.2);
+        }
+        
+        .card-body {
+            padding: 25px;
+            flex-grow: 1;
+        }
+        
+        .card-footer {
+            padding: 20px;
+            background: #f8f9fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #3a5ae0;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: 'Fira Code', monospace;
+            overflow-x: auto;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .comment {
+            color: #8292a2;
+        }
+        
+        .selector {
+            color: #a6e22e;
+        }
+        
+        .property {
+            color: #66d9ef;
+        }
+        
+        .value {
+            color: #ae81ff;
+        }
+        
+        .example-container {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Flexbox Example */
+        .flex-container {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        
+        .flex-item {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+            flex: 1;
+            transition: var(--transition);
+        }
+        
+        .flex-item:hover {
+            background: var(--secondary);
+            transform: scale(1.05);
+        }
+        
+        /* Grid Example */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        
+        .grid-item {
+            background: var(--info);
+            color: white;
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .grid-item:hover {
+            background: var(--secondary);
+            transform: rotate(5deg);
+        }
+        
+        /* Animation Example */
+        .animated-box {
+            width: 80px;
+            height: 80px;
+            background: var(--warning);
+            border-radius: 8px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        /* Transform Example */
+        .transform-item {
+            width: 80px;
+            height: 80px;
+            background: var(--danger);
+            border-radius: 8px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .transform-item:hover {
+            transform: rotate(45deg) scale(1.2);
+            background: var(--success);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 50px;
+            background: var(--dark);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+        
+        @media (max-width: 768px) {
+            .concept-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .flex-container, .grid-container {
+                flex-direction: column;
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>CSS Concepts</h1>
+            <p class="subtitle">Explore modern CSS features with interactive examples. Hover over elements and click buttons to see CSS in action!</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="concept-grid">
+            <!-- Concept 1: Flexbox -->
+            <div class="concept-card">
+                <div class="card-header">
+                    <i class="fas fa-th-large"></i>
+                    <h2>Flexbox Layout</h2>
+                </div>
+                <div class="card-body">
+                    <p>Flexbox is a one-dimensional layout method for arranging items in rows or columns. It simplifies distributing space and aligning content.</p>
+                    <div class="code-block">
+                        <span class="selector">.container</span> {<br>
+                        &nbsp;&nbsp;<span class="property">display</span>: <span class="value">flex</span>;<br>
+                        &nbsp;&nbsp;<span class="property">justify-content</span>: <span class="value">space-between</span>;<br>
+                        &nbsp;&nbsp;<span class="property">align-items</span>: <span class="value">center</span>;<br>
+                        &nbsp;&nbsp;<span class="property">gap</span>: <span class="value">1rem</span>;<br>
+                        }
+                    </div>
+                    <div class="example-container">
+                        <div class="flex-container">
+                            <div class="flex-item">Item 1</div>
+                            <div class="flex-item">Item 2</div>
+                            <div class="flex-item">Item 3</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span>Hover over items to see effects</span>
+                    <button class="btn btn-primary" onclick="toggleFlexbox()">
+                        <i class="fas fa-magic"></i> Toggle Layout
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Concept 2: CSS Grid -->
+            <div class="concept-card">
+                <div class="card-header">
+                    <i class="fas fa-th"></i>
+                    <h2>CSS Grid</h2>
+                </div>
+                <div class="card-body">
+                    <p>CSS Grid is a two-dimensional layout system designed for organizing content into rows and columns simultaneously.</p>
+                    <div class="code-block">
+                        <span class="selector">.container</span> {<br>
+                        &nbsp;&nbsp;<span class="property">display</span>: <span class="value">grid</span>;<br>
+                        &nbsp;&nbsp;<span class="property">grid-template-columns</span>: <span class="value">repeat(3, 1fr)</span>;<br>
+                        &nbsp;&nbsp;<span class="property">gap</span>: <span class="value">1rem</span>;<br>
+                        }
+                    </div>
+                    <div class="example-container">
+                        <div class="grid-container">
+                            <div class="grid-item">1</div>
+                            <div class="grid-item">2</div>
+                            <div class="grid-item">3</div>
+                            <div class="grid-item">4</div>
+                            <div class="grid-item">5</div>
+                            <div class="grid-item">6</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span>Hover over items to see effects</span>
+                    <button class="btn btn-primary" onclick="toggleGrid()">
+                        <i class="fas fa-magic"></i> Toggle Layout
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Concept 3: Animations -->
+            <div class="concept-card">
+                <div class="card-header">
+                    <i class="fas fa-film"></i>
+                    <h2>Animations</h2>
+                </div>
+                <div class="card-body">
+                    <p>CSS animations allow you to create smooth transitions between styles. You can define keyframes to control the animation sequence.</p>
+                    <div class="code-block">
+                        <span class="selector">@keyframes pulse</span> {<br>
+                        &nbsp;&nbsp;<span class="value">0%</span> { <span class="property">transform</span>: <span class="value">scale(1)</span>; }<br>
+                        &nbsp;&nbsp;<span class="value">50%</span> { <span class="property">transform</span>: <span class="value">scale(1.1)</span>; }<br>
+                        &nbsp;&nbsp;<span class="value">100%</span> { <span class="property">transform</span>: <span class="value">scale(1)</span>; }<br>
+                        }<br><br>
+                        
+                        <span class="selector">.element</span> {<br>
+                        &nbsp;&nbsp;<span class="property">animation</span>: <span class="value">pulse 2s infinite</span>;<br>
+                        }
+                    </div>
+                    <div class="example-container">
+                        <div class="animated-box"></div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span>Watch the animation play</span>
+                    <button class="btn btn-primary" onclick="toggleAnimation()">
+                        <i class="fas fa-pause"></i> Toggle Animation
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Concept 4: Transforms -->
+            <div class="concept-card">
+                <div class="card-header">
+                    <i class="fas fa-sync-alt"></i>
+                    <h2>Transforms & Transitions</h2>
+                </div>
+                <div class="card-body">
+                    <p>CSS transforms allow you to rotate, scale, skew, or translate elements. Transitions control the animation of property changes.</p>
+                    <div class="code-block">
+                        <span class="selector">.element</span> {<br>
+                        &nbsp;&nbsp;<span class="property">transition</span>: <span class="value">transform 0.3s ease</span>;<br>
+                        }<br><br>
+                        
+                        <span class="selector">.element:hover</span> {<br>
+                        &nbsp;&nbsp;<span class="property">transform</span>: <span class="value">rotate(45deg) scale(1.2)</span>;<br>
+                        }
+                    </div>
+                    <div class="example-container">
+                        <div class="transform-item">Hover Me</div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span>Hover over the box to see transform</span>
+                    <button class="btn btn-primary" onclick="toggleTransform()">
+                        <i class="fas fa-bolt"></i> Toggle Transform
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>CSS Concepts Showcase &copy; 2023</p>
+            <p>Explore and experiment with these modern CSS features</p>
+        </div>
+    </footer>
+
+    <script>
+        // Flexbox toggle function
+        function toggleFlexbox() {
+            const flexContainer = document.querySelector('.flex-container');
+            flexContainer.classList.toggle('vertical-layout');
+            
+            if (flexContainer.classList.contains('vertical-layout')) {
+                flexContainer.style.flexDirection = 'column';
+            } else {
+                flexContainer.style.flexDirection = 'row';
+            }
+        }
+        
+        // Grid toggle function
+        function toggleGrid() {
+            const gridContainer = document.querySelector('.grid-container');
+            
+            if (gridContainer.style.gridTemplateColumns === 'repeat(2, 1fr)') {
+                gridContainer.style.gridTemplateColumns = 'repeat(3, 1fr)';
+            } else {
+                gridContainer.style.gridTemplateColumns = 'repeat(2, 1fr)';
+            }
+        }
+        
+        // Animation toggle function
+        function toggleAnimation() {
+            const animatedBox = document.querySelector('.animated-box');
+            const buttonIcon = document.querySelector('.fa-pause');
+            
+            if (animatedBox.style.animationPlayState === 'paused') {
+                animatedBox.style.animationPlayState = 'running';
+                buttonIcon.classList.remove('fa-play');
+                buttonIcon.classList.add('fa-pause');
+            } else {
+                animatedBox.style.animationPlayState = 'paused';
+                buttonIcon.classList.remove('fa-pause');
+                buttonIcon.classList.add('fa-play');
+            }
+        }
+        
+        // Transform toggle function
+        function toggleTransform() {
+            const transformItem = document.querySelector('.transform-item');
+            
+            if (transformItem.style.transform === 'none') {
+                transformItem.style.transform = 'rotate(45deg) scale(1.2)';
+                transformItem.style.backgroundColor = '#28a745';
+            } else {
+                transformItem.style.transform = 'none';
+                transformItem.style.backgroundColor = '#dc3545';
+            }
+        }
+    </script>
+</body>
+</html>
