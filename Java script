@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Concepts Showcase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #4a6cf7;
+            --secondary: #6f42c1;
+            --dark: #1d2a3a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --success: #28a745;
+            --danger: #dc3545;
+            --warning: #ffc107;
+            --info: #17a2b8;
+        }
+        
+        body {
+            background-color: #f5f7ff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .concept-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .concept-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+        
+        .card-header {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .card-header i {
+            font-size: 24px;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .card-footer {
+            padding: 15px 25px;
+            background: #f8f9fa;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #3a5ae0;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: 'Fira Code', monospace;
+            overflow-x: auto;
+            font-size: 0.9rem;
+        }
+        
+        .comment {
+            color: #8292a2;
+        }
+        
+        .keyword {
+            color: #f92672;
+        }
+        
+        .function {
+            color: #e6db74;
+        }
+        
+        .console {
+            background: #1d1d1d;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-family: 'Fira Code', monospace;
+            min-height: 100px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .console-line {
+            margin-bottom: 5px;
+        }
+        
+        .console-command {
+            color: #66d9ef;
+        }
+        
+        .console-output {
+            color: #a6e22e;
+        }
+        
+        .console-error {
+            color: #ff6188;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            background: var(--dark);
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .concept-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>JavaScript Concepts</h1>
+            <p class="subtitle">Learn essential JavaScript concepts with interactive examples. Edit and run the code to see how it works!</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="concept-grid">
+            <!-- Concept 1: Variables -->
+            <div class="concept-card">
+                <div class="card-header">
+                    <i class="fas fa-code"></i>
+                    <h2>Variables & Data Types</h2>
+                </div>
+                <div class="card-body">
+                    <p>JavaScript variables can be declared using <code>var</code>, <code>let</code>, or <code>const</code>. JavaScript is dynamically typed.</p>
+                    <div class="code-block">
+                        <span class="comment">// Variable declarations</span><br>
+                        <span class="keyword">var</span> name = <span class="function">"John"</span>; <span class="comment">// string</span><br>
+                        <span class="keyword">let</span> age = 25; <span class="comment">// number</span><br>
+                        <span class="keyword">const</span> isStudent = <span class="keyword">true</span>; <span class="comment">// boolean</span><br>
+                        <span class="keyword">let</span> hobbies = [<span class="function">"reading"</span>, <span class="function">"coding"</span>]; <span class="comment">// array</span><br>
+                        <span class="keyword">let</span> person = { <span class="comment">// object</span><br>
+                        &nbsp;&nbsp;name: <span class="function">"Jane"</span>,<br>
+                        &nbsp;&nbsp;age: 30<br>
+                        };
+                    </div>
+                    <div class="console" id="console1">
+                        <div class="console-line console-command">> Run the code to see output</div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-outline" onclick="resetConsole('console1')">Reset</button>
+                    <button class="btn btn-primary" onclick="runVariablesExample()">Run Code</button>
+                </div>
+            </div>
+            
+            <!-- Concept 2: Functions -->
+            <div class="concept-card">
+                <div class="card-header">
+                    <i class="fas fa-cogs"></i>
+                    <h2>Functions</h2>
+                </div>
+                <div class="card-body">
+                    <p>Functions are blocks of code designed to perform a particular task. They can be declared in several ways.</p>
+                    <div class="code-block">
+                        <span class="comment">// Function declarations</span><br>
+                        <span class="keyword">function</span> greet(name) {<br>
+                        &nbsp;&nbsp;<span class="keyword">return</span> <span class="function">`Hello, </span>${name}<span class="function">!`</span>;<br>
+                        }<br><br>
+                        
+                        <span class="comment">// Arrow function</span><br>
+                        <span class="keyword">const</span> multiply = (a, b) => a * b;<br><br>
+                        
+                        <span class="comment">// Function call</span><br>
+                        <span class="keyword">const</span> message = greet(<span class="function">"Alice"</span>);<br>
+                        <span class="keyword">const</span> result = multiply(5, 7);
+                    </div>
+                    <div class="console" id="console2">
+                        <div class="console-line console-command">> Run the code to see output</div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-outline" onclick="resetConsole('console2')">Reset</button>
+                    <button class="btn btn-primary" onclick="runFunctionsExample()">Run Code</button>
+                </div>
+            </div>
+            
+            <!-- Concept 3: DOM Manipulation -->
+            <div class="concept-card">
+                <div class="card-header">
+                    <i class="fas fa-desktop"></i>
+                    <h2>DOM Manipulation</h2>
+                </div>
+                <div class="card-body">
+                    <p>The Document Object Model (DOM) represents the page structure. JavaScript can manipulate the DOM dynamically.</p>
+                    <div class="code-block">
+                        <span class="comment">// Changing text content</span><br>
+                        document.getElementById(<span class="function">"demo"</span>).innerHTML = <span class="function">"Hello DOM!"</span>;<br><br>
+                        
+                        <span class="comment">// Changing styles</span><br>
+                        document.getElementById(<span class="function">"demo"</span>).style.color = <span class="function">"blue"</span>;<br><br>
+                        
+                        <span class="comment">// Handling events</span><br>
+                        element.addEventListener(<span class="function">"click"</span>, () => {<br>
+                        &nbsp;&nbsp;alert(<span class="function">"Element clicked!"</span>);<br>
+                        });
+                    </div>
+                    <div class="console" id="console3">
+                        <div class="console-line console-command">> Run the code to see output</div>
+                    </div>
+                    <div id="demo" style="padding: 10px; background: #f0f0f0; border-radius: 5px; margin-top: 15px;">
+                        Original content
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-outline" onclick="resetConsole('console3'); document.getElementById('demo').innerHTML = 'Original content'; document.getElementById('demo').style.color = 'black';">Reset</button>
+                    <button class="btn btn-primary" onclick="runDomExample()">Run Code</button>
+                </div>
+            </div>
+            
+            <!-- Concept 4: Async/Await -->
+            <div class="concept-card">
+                <div class="card-header">
+                    <i class="fas fa-clock"></i>
+                    <h2>Async/Await</h2>
+                </div>
+                <div class="card-body">
+                    <p>Async functions and the await keyword make asynchronous code easier to write and read.</p>
+                    <div class="code-block">
+                        <span class="comment">// Simulating API call with Promise</span><br>
+                        <span class="keyword">function</span> fetchData() {<br>
+                        &nbsp;&nbsp;<span class="keyword">return new</span> Promise((resolve) => {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;setTimeout(() => {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resolve(<span class="function">"Data received!"</span>);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;}, 2000);<br>
+                        &nbsp;&nbsp;});<br>
+                        }<br><br>
+                        
+                        <span class="comment">// Using async/await</span><br>
+                        <span class="keyword">async function</span> getData() {<br>
+                        &nbsp;&nbsp;<span class="keyword">const</span> data = <span class="keyword">await</span> fetchData();<br>
+                        &nbsp;&nbsp;console.log(data);<br>
+                        }<br><br>
+                        
+                        getData();
+                    </div>
+                    <div class="console" id="console4">
+                        <div class="console-line console-command">> Run the code to see output</div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-outline" onclick="resetConsole('console4')">Reset</button>
+                    <button class="btn btn-primary" onclick="runAsyncExample()">Run Code</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>JavaScript Concepts Showcase &copy; 2023</p>
+            <p>Practice and experiment with these fundamental JavaScript concepts</p>
+        </div>
+    </footer>
+
+    <script>
+        // Variables Example
+        function runVariablesExample() {
+            const consoleElement = document.getElementById('console1');
+            resetConsole('console1');
+            
+            logToConsole(consoleElement, "> Running variables example...", "command");
+            
+            // Simulate the code execution
+            setTimeout(() => {
+                logToConsole(consoleElement, "name = 'John'", "output");
+                logToConsole(consoleElement, "age = 25", "output");
+                logToConsole(consoleElement, "isStudent = true", "output");
+                logToConsole(consoleElement, "hobbies = ['reading', 'coding']", "output");
+                logToConsole(consoleElement, "person = {name: 'Jane', age: 30}", "output");
+            }, 500);
+        }
+        
+        // Functions Example
+        function runFunctionsExample() {
+            const consoleElement = document.getElementById('console2');
+            resetConsole('console2');
+            
+            logToConsole(consoleElement, "> Running functions example...", "command");
+            
+            // Simulate the code execution
+            setTimeout(() => {
+                logToConsole(consoleElement, "greet('Alice') => 'Hello, Alice!'", "output");
+                logToConsole(consoleElement, "multiply(5, 7) => 35", "output");
+            }, 500);
+        }
+        
+        // DOM Manipulation Example
+        function runDomExample() {
+            const consoleElement = document.getElementById('console3');
+            resetConsole('console3');
+            
+            logToConsole(consoleElement, "> Running DOM manipulation example...", "command");
+            
+            // Actually manipulate the DOM
+            setTimeout(() => {
+                const demoElement = document.getElementById('demo');
+                demoElement.innerHTML = "Hello DOM!";
+                demoElement.style.color = "blue";
+                
+                logToConsole(consoleElement, "Changed text content to 'Hello DOM!'", "output");
+                logToConsole(consoleElement, "Changed text color to blue", "output");
+            }, 500);
+        }
+        
+        // Async/Await Example
+        function runAsyncExample() {
+            const consoleElement = document.getElementById('console4');
+            resetConsole('console4');
+            
+            logToConsole(consoleElement, "> Running async/await example...", "command");
+            logToConsole(consoleElement, "Waiting for data... (2 seconds)", "output");
+            
+            // Simulate async operation
+            setTimeout(() => {
+                logToConsole(consoleElement, "Data received!", "output");
+            }, 2000);
+        }
+        
+        // Utility function to log to console elements
+        function logToConsole(consoleElement, message, type = "output") {
+            const line = document.createElement('div');
+            line.className = `console-line console-${type}`;
+            line.textContent = message;
+            consoleElement.appendChild(line);
+            consoleElement.scrollTop = consoleElement.scrollHeight;
+        }
+        
+        // Reset console content
+        function resetConsole(consoleId) {
+            const consoleElement = document.getElementById(consoleId);
+            consoleElement.innerHTML = '';
+        }
+    </script>
+</body>
+</html>
